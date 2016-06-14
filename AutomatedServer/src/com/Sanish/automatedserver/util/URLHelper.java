@@ -17,14 +17,14 @@ import java.net.URLConnection;
  * @author gandoff
  */
 public class URLHelper {
+
     public static String get(String param) throws IOException {
-        String link ="http://www.urbandictionary.com/define.php?";
+        String link = "http://www.urbandictionary.com/define.php?";
         URL url = new URL(link + "term=" + param);
 
         URLConnection connect = url.openConnection();
         connect.setDoOutput(true);
-        
-        
+
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connect.getInputStream()));
 
         StringBuilder content = new StringBuilder();
@@ -35,25 +35,28 @@ public class URLHelper {
         bufferedReader.close();
         return content.toString();
     }
-        public static String post(String param) throws IOException {
-        String link ="http://www.jobsnepal.com/simple-job-search";
+
+    public static String post(String param) throws IOException {
+        String link = "http://www.jobsnepal.com/simple-job-search";
         URL url = new URL(link);
 
         URLConnection connect = url.openConnection();
         connect.setDoOutput(true);
-        if(!(param.equalsIgnoreCase(""))){
-        OutputStream os = connect.getOutputStream();
-        byte[] data = ("keywords="+param).getBytes();
-
-        os.write(data);
+        if (!(param.equalsIgnoreCase(""))) {
+            OutputStream os = connect.getOutputStream();
+            byte[] data = ("Keywords=" + param).getBytes();
+            os.write(data);
         }
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connect.getInputStream()));
 
         StringBuilder content = new StringBuilder();
         String line = "";
+
+        System.out.println("Reading from URL");
+        System.out.println(url.toString());
         while ((line = bufferedReader.readLine()) != null) {
-            content.append(line);
+            content.append(line + "\n");
         }
         bufferedReader.close();
 

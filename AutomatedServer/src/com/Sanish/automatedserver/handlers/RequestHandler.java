@@ -9,7 +9,6 @@ import com.Sanish.automatedserver.commands.CommandFactory;
 import com.Sanish.automatedserver.commands.Commands;
 import com.Sanish.automatedserver.entity.Client;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.List;
@@ -65,7 +64,6 @@ public class RequestHandler {
         Commands c = CommandFactory.getInstance(command,this);
         System.out.println("Command is executing");
         PrintWriter ps = new PrintWriter(me.getSocket().getOutputStream());
-        ps.println("Commencing Scrap");
         ps.flush();
         if (c != null) {
             c.execute(command, me);

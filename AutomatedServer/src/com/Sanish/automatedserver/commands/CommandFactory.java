@@ -12,14 +12,16 @@ import com.Sanish.automatedserver.handlers.RequestHandler;
  * @author gandoff
  */
 public class CommandFactory {
-    public static Commands getInstance(String[] command,RequestHandler handler){
-     if(command[0].equalsIgnoreCase("pm")){
-         return new PrivateMessageCommand(handler);
-     }
-     else if(command[0].equalsIgnoreCase("UD")){
-         return new UrbanDictionarySearch(handler);
-     } 
-    return null;
+
+    public static Commands getInstance(String[] command, RequestHandler handler) {
+        if (command[0].equalsIgnoreCase("pm")) {
+            return new PrivateMessageCommand(handler);
+        } else if (command[0].equalsIgnoreCase("UD")) {
+            return new UrbanDictionarySearch(handler);
+        } else if (command[0].equalsIgnoreCase("JNS")) {
+            return new JobsNepalSearch(handler);
+        }
+        return null;
     }
-    
+
 }

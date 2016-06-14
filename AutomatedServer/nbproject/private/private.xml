@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/gandoff/Documents/NetBeansProjects/AutomatedServer/src/com/Sanish/automatedserver/scrapper/JobScrapper.java</file>
+            <file>file:/E:/gandoff/Documents/NetBeansProjects/AutomatedServer/src/com/Sanish/automatedserver/entity/Job.java</file>
+            <file>file:/E:/gandoff/Documents/NetBeansProjects/AutomatedServer/src/com/Sanish/automatedserver/handlers/ClientListener.java</file>
+            <file>file:/E:/gandoff/Documents/NetBeansProjects/AutomatedServer/src/com/Sanish/automatedserver/handlers/RequestHandler.java</file>
+            <file>file:/E:/gandoff/Documents/NetBeansProjects/AutomatedServer/src/com/Sanish/automatedserver/commands/CommandFactory.java</file>
+            <file>file:/E:/gandoff/Documents/NetBeansProjects/AutomatedServer/src/com/Sanish/automatedserver/commands/JobsNepalSearch.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -5,8 +5,13 @@
  */
 package com.Sanish.automatedserver.scrapper;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.Sanish.automatedserver.entity.Job;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 /**
  *
@@ -14,19 +19,30 @@ import java.util.regex.Pattern;
  */
 public class JobScrapper {
 
-    public static String scrap(String content) {
-        String searchReEx = "<a href='(.*?)'(.*?)<h4(.*?)>(.*?)<";
-
-        Pattern pattern = Pattern.compile(searchReEx);
-        Matcher matcher = pattern.matcher(content);
-
-        StringBuilder sbFile = new StringBuilder();
-        while (matcher.find()) {
-            String jobTitle = matcher.group(4);
-            String jobLink = matcher.group(1);
-            sbFile.append(jobTitle.trim() + "," + jobLink.trim() + "," + "\r\n");
+    public static List<Job> scrap(String content) {
+        Document doc = Jsoup.parse(content);
+        List<Job> jobList = new ArrayList<>();
+        for (Element table : doc.select("table[class=gridx]")) {
+            for (Element row : table.select("tr")) {
+                Job job = new Job();
+                StringBuilder sb = new StringBuilder();
+                for (Element data : row.select("td")) {
+                    sb.append(data.text());
+                    sb.append(",");
+                }
+                StringTokenizer st = new StringTokenizer(sb.toString(), ",");
+                if (st.countTokens() != 0) {
+                    job.setJobTitle(st.nextToken());
+                    job.setCompany(st.nextToken());
+                    job.setType(st.nextToken());
+                    job.setDeadline(st.nextToken());
+                }
+                if (job.getJobTitle() != null) {
+                    jobList.add(job);
+                }
+            }
         }
-        return sbFile.toString();
+        return jobList;
 
     }
 
