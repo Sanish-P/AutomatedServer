@@ -1,3 +1,3 @@
 # AutomatedServer
 ChatServer with urban dictionary scrapper
-Added jobs nepal Scrapper
+Added jobs nepal scrapper
